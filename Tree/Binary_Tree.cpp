@@ -102,15 +102,15 @@ void Tree::CreateTree() {
         }
     }
 }
- 
+
 void Tree::Preorder(Node *p) {
-    if (p){
+    if(p){
         cout << p->data << ", " << flush;
         Preorder(p->lchild);
         Preorder(p->rchild);
     }
 }
- 
+
 void Tree::Inorder(Node *p) {
     if (p){
         Inorder(p->lchild);
@@ -118,7 +118,7 @@ void Tree::Inorder(Node *p) {
         Inorder(p->rchild);
     }
 }
- 
+
 void Tree::Postorder(Node *p) {
     if (p){
         Postorder(p->lchild);
@@ -126,12 +126,12 @@ void Tree::Postorder(Node *p) {
         cout << p->data << ", " << flush;
     }
 }
- 
+
 void Tree::Levelorder(Node *p) {
     queue<Node*> q;
     cout << p->data << ", " << flush;
     q.push(p);
- 
+
     while (! q.empty()){
         p = q.front();
         q.pop();
@@ -140,14 +140,14 @@ void Tree::Levelorder(Node *p) {
             cout << p->lchild->data << ", " << flush;
             q.push(p->lchild);
         }
- 
+
         if (p->rchild){
             cout << p->rchild->data << ", " << flush;
             q.push(p->rchild);
         }
     }
 }
- 
+
 void Tree::iterativePreorder(Node *p) {
     stack<Node*> stk;
     while (p != nullptr || ! stk.empty()){
@@ -163,7 +163,7 @@ void Tree::iterativePreorder(Node *p) {
     }
     cout << endl;
 }
- 
+
 void Tree::iterativeInorder(Node *p) {
     stack<Node*> stk;
     while (p != nullptr || ! stk.empty()){
@@ -228,7 +228,7 @@ Node* Tree::generateFromTraversal(int *inorder, int *preorder, int inStart, int 
  
     return node;
 }
- 
+
 int Tree::Height(Node *p) {
     int l = 0;
     int r = 0;
@@ -236,15 +236,14 @@ int Tree::Height(Node *p) {
     if (p != nullptr){
         l = Height(p->lchild);
         r = Height(p->rchild);
-        if (l > r){
+        if (l > r)
             return l + 1;
-        } else {
+        else
             return r + 1;
-        }
     }
     return 0;
 }
- 
+
 int Tree::Count(Node *p) {
     int x;
     int y;
@@ -266,18 +265,17 @@ int Tree::Sum(Node *p) {
     }
     return 0;
 }
- 
+
 int Tree::deg2NodeCount(Node *p) {
     int x;
     int y;
     if (p != nullptr){
         x = deg2NodeCount(p->lchild);
         y = deg2NodeCount(p->rchild);
-        if (p->lchild && p->rchild){
+        if (p->lchild && p->rchild)
             return x + y + 1;
-        } else {
+        else
             return x + y;
-        }
     }
     return 0;
 }

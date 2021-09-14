@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 template <class T>
-class Array
-{
+class Array{
 private:
     T *A;
     int size;

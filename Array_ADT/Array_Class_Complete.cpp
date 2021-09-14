@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
-class Array
-{
+class Array{
 private:
     int *A;
     int size;
@@ -106,7 +105,7 @@ int Array::LinearSearch(int key)
     {
         if (key == A[i])
         {
-            swap(&A[i], &A[0]);
+            swap(&A[i], &A[0]); // Improvement in Linear Search
             return i;
         }
     }
@@ -150,10 +149,8 @@ int Array::Max()
     int max = A[0];
     int i;
     for (i = 1; i < length; i++)
-    {
         if (A[i] > max)
             max = A[i];
-    }
     return max;
 }
 
@@ -162,10 +159,8 @@ int Array::Min()
     int min = A[0];
     int i;
     for (i = 1; i < length; i++)
-    {
         if (A[i] < min)
             min = A[i];
-    }
     return min;
 }
 
@@ -247,15 +242,11 @@ void Array::Rearrange()
     }
 }
 
-Array *Array::Merge(Array arr2)
-{
+Array *Array::Merge(Array arr2){
     int i, j, k;
     i = j = k = 0;
-
     Array *arr3 = new Array(length + arr2.length);
-
-    while (i < length && j < arr2.length)
-    {
+    while (i < length && j < arr2.length){
         if (A[i] < arr2.A[j])
             arr3->A[k++] = A[i++];
         else
@@ -266,19 +257,14 @@ Array *Array::Merge(Array arr2)
     for (; j < arr2.length; j++)
         arr3->A[k++] = arr2.A[j];
     arr3->length = length + arr2.length;
-
     return arr3;
 }
 
-Array *Array::Union(Array arr2)
-{
+Array *Array::Union(Array arr2){
     int i, j, k;
     i = j = k = 0;
-
     Array *arr3 = new Array(length + arr2.length);
-
-    while (i < length && j < arr2.length)
-    {
+    while (i < length && j < arr2.length){
         if (A[i] < arr2.A[j])
             arr3->A[k++] = A[i++];
         else if (arr2.A[j] < A[i])
@@ -293,61 +279,45 @@ Array *Array::Union(Array arr2)
         arr3->A[k++] = A[i];
     for (; j < arr2.length; j++)
         arr3->A[k++] = arr2.A[j];
-
     arr3->length = k;
-
     return arr3;
 }
 
-Array *Array::Inter(Array arr2)
-{
+Array *Array::Inter(Array arr2){
     int i, j, k;
     i = j = k = 0;
-
     Array *arr3 = new Array(length + arr2.length);
-
-    while (i < length && j < arr2.length)
-    {
+    while (i < length && j < arr2.length){
         if (A[i] < arr2.A[j])
             i++;
         else if (arr2.A[j] < A[i])
             j++;
-        else if (A[i] == arr2.A[j])
-        {
+        else if (A[i] == arr2.A[j]){
             arr3->A[k++] = A[i++];
             j++;
         }
     }
-
     arr3->length = k;
-
     return arr3;
 }
 
-Array *Array::Diff(Array arr2)
-{
+Array *Array::Diff(Array arr2){
     int i, j, k;
     i = j = k = 0;
-
     Array *arr3 = new Array(length + arr2.length);
-
-    while (i < length && j < arr2.length)
-    {
+    while (i < length && j < arr2.length){
         if (A[i] < arr2.A[j])
             arr3->A[k++] = A[i++];
         else if (arr2.A[j] < A[i])
             j++;
-        else
-        {
+        else{
             i++;
             j++;
         }
     }
     for (; i < length; i++)
         arr3->A[k++] = A[i];
-
     arr3->length = k;
-
     return arr3;
 }
 
