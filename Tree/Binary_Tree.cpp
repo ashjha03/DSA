@@ -150,8 +150,8 @@ void Tree::Levelorder(Node *p) {
 
 void Tree::iterativePreorder(Node *p) {
     stack<Node*> stk;
-    while (p != nullptr || ! stk.empty()){
-        if (p != nullptr){
+    while (p || ! stk.empty()){
+        if (p){
             cout << p->data << ", " << flush;
             stk.push(p);
             p = p->lchild;
@@ -179,7 +179,7 @@ void Tree::iterativeInorder(Node *p) {
     }
     cout << endl;
 }
- 
+
 void Tree::iterativePostorder(Node *p) {
     stack<long int> stk;
     long int temp;
@@ -201,7 +201,7 @@ void Tree::iterativePostorder(Node *p) {
     }
     cout << endl;
 }
- 
+
 int searchInorder(int inArray[], int inStart, int inEnd, int data){
     for (int i=inStart; i<=inEnd; i++){
         if (inArray[i] == data){

@@ -48,7 +48,7 @@ void IterativeMergeSort(int A[], int n){
         }
     
     if(p/2<n) // For odd no. of elements
-        Merge(A, 0, p/2, n-1);
+        Merge(A, 0, p/2-1, n-1);
 }
 
 void RecursiveMergeSort(int A[], int low, int high){

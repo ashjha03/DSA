@@ -6,7 +6,7 @@ class Node{
         int data;
         Node* next;
 };
- 
+
 class Stack{
     private:
         Node* top;
@@ -20,7 +20,7 @@ class Stack{
         int isFull();
         int stackTop();
 };
- 
+
 Stack::Stack() {
     top = nullptr;
 }
